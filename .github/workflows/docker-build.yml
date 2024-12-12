@@ -14,9 +14,26 @@ jobs:
       - name: Login to DockerHub
         run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
-      - name: Build and Push Docker Image
+      - name: Build and Push Docker Image backend
         uses: docker/build-push-action@v3
         with:
           context: ./simple-api
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api:latest
           push: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: Build and Push Docker Image database
+        uses: docker/build-push-action@v3
+        with:
+          context: ./database
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/databse:latest
+          push: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: Build and Push Docker Image database
+        uses: docker/build-push-action@v3
+        with:
+          context: ./http-server
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/httpserver:latest
+          push: ${{ github.ref == 'refs/heads/main' }}
+
+
+

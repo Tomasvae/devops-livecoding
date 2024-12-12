@@ -1,0 +1,11 @@
+---
+- name: Installer nginx sur l'hôte distant
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Installer nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes

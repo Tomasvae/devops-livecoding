@@ -1,0 +1,8 @@
+- name: Lancer un conteneur HTTPD
+  docker_container:
+    name: httpd
+    image: tomvae/tp-devops-simple-api:latest
+    state: started
+    restart_policy: always
+    networks:
+      - my_network

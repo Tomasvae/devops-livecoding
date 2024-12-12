@@ -1,0 +1,12 @@
+---
+- name: Installer le Docker SDK pour Python via apt
+  apt:
+    name: python3-docker
+    state: present
+    update_cache: yes
+  become: true  # Nécessite sudo
+
+- name: Créer un réseau Docker
+  docker_network:
+    name: my_network
+    state: present

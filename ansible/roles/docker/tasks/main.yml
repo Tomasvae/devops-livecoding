@@ -1,0 +1,33 @@
+---
+- name: Installer les paquets requis pour Docker
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+      - python3-venv
+    state: latest
+    update_cache: yes
+
+- name: Ajouter la clé GPG officielle de Docker
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+
+- name: Ajouter le dépôt stable de Docker
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/debian {{ ansible_facts['distribution_release'] }} stable"
+    state: present
+    update_cache: yes
+
+- name: Installer Docker
+  apt:
+    name: docker-ce
+    state: present
+
+- name: S'assurer que Docker est en cours d'exécution
+  service:
+    name: docker
+    state: started

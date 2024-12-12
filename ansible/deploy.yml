@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - docker         # Rôle pour installer Docker
+    - docker_network # Rôle pour créer le réseau Docker
+    - SQL       # Rôle pour lancer PostgreSQL
+    - HTTPD          # Rôle pour lancer l'application (HTTPD ou autre)
