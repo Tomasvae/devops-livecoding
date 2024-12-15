@@ -1,0 +1,4 @@
+- name: Run app
+  docker_container:
+    name: app
+    image: tomvae/tp-devops-simple-api:latest

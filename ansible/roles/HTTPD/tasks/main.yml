@@ -1,8 +1,4 @@
-- name: Lancer un conteneur HTTPD
+- name: Run HTTPD
   docker_container:
     name: httpd
-    image: tomvae/tp-devops-simple-api:latest
-    state: started
-    restart_policy: always
-    networks:
-      - my_network
+    image: tomvae/httpserver:latest

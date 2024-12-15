@@ -1,7 +1,7 @@
 - name: Run database container
   docker_container:
     name: my-database
-    image: tomvae/tp-devops-simple-api:latest  # Remplacez par votre image Docker pour la base de données
+    image: tomvae/databse:latest
     env:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
